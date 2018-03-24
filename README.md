@@ -1,6 +1,6 @@
 # OnlineCanvasServer
 
-This is the source code for Live Whiteboard Web Project, which allows us to draw in Real Time on multiple clients using Socket.IO and HTML5 Canvas.
+This is the source code for Online Canvas board Web Project, which allows us to draw in Real Time on multiple clients using Socket.IO and HTML5 Canvas.
 
 ## Development
 
