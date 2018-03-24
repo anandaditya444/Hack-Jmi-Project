@@ -1,5 +1,5 @@
 {
-  "name": "livewhiteboard",
+  "name": "OnlineCanvasServer",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bhavyaagg/LiveWhiteboardServer.git"
+    "url": "git+https://github.com/anandaditya444/OnlineCanvasServer.git"
   },
   "author": "Aditya Anand Thakur <anandaditya444@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bhavyaagg/LiveWhiteboardServer/issues"
+    "url": "https://github.com/anandaditya444/LiveWhiteboardServer/issues"
   },
-  "homepage": "https://github.com/bhavyaagg/LiveWhiteboardServer#readme",
+  "homepage": "https://github.com/anandaditya444/OnlineCanvasServer#readme",
   "dependencies": {
     "express": "^4.16.2",
     "socket.io": "^2.0.4"
