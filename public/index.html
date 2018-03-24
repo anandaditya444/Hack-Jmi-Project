@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live Whiteboard</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <link rel="stylesheet" href="./css/index.css">
+   <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+</head>
+<body>
+
+<!--<div class="modal" id="sessionModal" tabindex="-1" role="dialog">-->
+<!--<div class="modal-dialog" role="document">-->
+<!--<div class="modal-content">-->
+<!--<div class="modal-header">-->
+<!--<h5 class="modal-title">Live Whiteboard</h5>-->
+<!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--<span aria-hidden="true">&times;</span>-->
+<!--</button>-->
+<!--</div>-->
+<!--<div class="modal-body text-center">-->
+<!--<div class="container">-->
+<!--<div class="row mb-3">-->
+<!--<div class="col-sm-12">-->
+<!--<button id="createSession" class="btn btn-primary">-->
+<!--Create a Session-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-sm-8 form-group">-->
+<!--<input id="sessionIdJoinSession" class="form-control" placeholder="Session Id" type="text">-->
+<!--</div>-->
+<!--<div class="col-sm-4">-->
+<!--<button id="joinSession" class="btn btn-primary">-->
+<!--Join a Session-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="container-fluid">
+  <div id="topBar" class="row align-items-center no-gutters">
+    <div class="col"></div>
+    <div class="col-2">
+      <button id="createSession" class="btn btn-success">
+        Create a Session
+      </button>
+    </div>
+    <div class="col-2 ml-1 mr-2">
+      <input id="sessionIdJoinSession" class="form-control" placeholder="Session Id" type="text">
+    </div>
+    <div class="col-2">
+      <button id="joinSession" class="btn btn-success">
+        Join a Session
+      </button>
+    </div>
+  </div>
+  <div id="mainContent" class="row">
+    <div class="col-12">
+      <canvas id="whiteboard"></canvas>
+
+      <div class="colors">
+        <div class="color black"></div>
+        <div class="color red"></div>
+        <div class="color green"></div>
+        <div class="color blue"></div>
+        <div class="color yellow"></div>
+        <div class="color white"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="./js/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="./js/bootstrap.js"></script>
+<script src="./js/index.js"></script>
+<script>
+  $('#sessionModal').modal('show');
+</script>
+  <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+   <script src="/socket.io/socket.io.js"></script>
+   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+   <script>
+      $(function () {
+       var socket = io();
+       $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+        });
+     });
+   </script>
+</body>
+</html>
